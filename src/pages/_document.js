@@ -14,6 +14,7 @@ class CustomDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=DM+Sans:wght@400;500;700&display=swap"
           />
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"/> 
         </Head>
         <body>
           <Main />

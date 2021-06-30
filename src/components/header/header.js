@@ -1,95 +1,167 @@
 /** @jsxRuntime classic */
+
 /** @jsx jsx */
-import { jsx, Container } from 'theme-ui';
+import { jsx, Box, Container, MenuButton, Flex, Button } from 'theme-ui';
 import { useState } from 'react';
+import { GrClose } from 'react-icons/gr';
 import Sticky from 'react-stickynode';
-import { DrawerProvider } from 'contexts/drawer/drawer-provider';
-import NavbarDrawer from './navbar-drawer';
 import Logo from 'components/logo';
 import { NavLink } from 'components/link';
-
 import menuItems from './header.data';
 
 export default function Header() {
-  const [state, setState] = useState({
-    isMobileMenu: false,
-    isSticky: false,
-  });
-  const handleStateChange = (status) => {
-    status.status === Sticky.STATUS_FIXED
-      ? setState({ ...state, isSticky: true })
-      : setState({ ...state, isSticky: false });
+  const [mobileMenu, setMobileMenu] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenu(!mobileMenu);
+  };
+
+  const openMobileMenu = () => {
+    setMobileMenu(true);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenu(false);
   };
 
   return (
-    <DrawerProvider>
-      <Sticky
-        enabled={true}
-        top={0}
-        activeClass="is-sticky"
-        innerZ={100}
-        onStateChange={handleStateChange}
-      >
-        <header
+    <Box sx={styles.headerWrapper}>
+      <Sticky enabled={true} top={0} activeClass="is-sticky" innerZ={10}>
+        <Box
+          as="header"
           sx={styles.header}
-          className={state.isSticky ? 'is-sticky' : ''}
+          className={mobileMenu ? 'is-mobile-menu' : ''}
         >
-          <Container sx={styles.container}>
-            <Logo sx={styles.logo} />
-            <nav as="nav" sx={styles.navbar} className={'navbar'}>
-              {menuItems.map(({ path, label }, i) => (
-                <NavLink key={i} path={path} label={label} />
-              ))}
-            </nav>
-            <NavbarDrawer />
+          <Container>
+            <Box sx={styles.headerInner}>
+              <Logo />
+
+              <Flex
+                as="nav"
+                sx={styles.navbar}
+                className={mobileMenu ? 'navbar active' : 'navbar'}
+              >
+                <Box
+                  as="ul"
+                  sx={styles.navList}
+                  className={mobileMenu ? 'active' : ''}
+                >
+                  {menuItems.map(({ path, label }, i) => (
+                    <li key={i}>
+                      <NavLink
+                        path={path}
+                        label={label}
+                        onClick={closeMobileMenu}
+                      />
+                    </li>
+                  ))}
+                </Box>
+                <Button sx={styles.joinNow} variant="primaryMd">
+                  Join us now
+                </Button>
+              </Flex>
+
+              {mobileMenu ? (
+                <Button variant="text" sx={styles.closeButton}>
+                  <GrClose onClick={closeMobileMenu} size="20px" />
+                </Button>
+              ) : (
+                <MenuButton
+                  aria-label="Toggle Menu"
+                  onClick={toggleMobileMenu}
+                />
+              )}
+            </Box>
           </Container>
-        </header>
+        </Box>
       </Sticky>
-    </DrawerProvider>
+    </Box>
   );
 }
 
 const styles = {
-  header: {
+  headerWrapper: {
     backgroundColor: 'transparent',
+    '.is-sticky': {
+      header: {
+        backgroundColor: '#fff',
+        boxShadow: '0 6px 13px rgba(38, 78, 118, 0.1)',
+        py: [3],
+      },
+    },
+  },
+  header: {
     position: 'fixed',
     left: 0,
     right: 0,
-    py: [5],
+    py: [3],
     transition: 'all 0.3s ease-in-out 0s',
-    '&.is-sticky': {
-      backgroundColor: 'white',
-      boxShadow: '0px 20px 50px rgba(59, 90, 136, 0.05)',
-      py: [3],
+    '&.is-mobile-menu': {
+      backgroundColor: '#fff',
     },
   },
-  container: {
+  headerInner: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    // position: ['relative', null, null, 'static'],
-  },
-  logo: {
-    mr: [null, null, null, null, 30, 12],
+    '@media only screen and (max-width: 768px)': {
+      '.navbar': {
+        position: 'absolute',
+        top: '100%',
+        backgroundColor: '#fff',
+        width: '100%',
+        left: 0,
+        p: '20px 30px',
+        display: 'block',
+        boxShadow: '0 6px 13px rgba(38,78,118,0.1)',
+        opacity: 0,
+        visibility: 'hidden',
+        transition: 'all 0.3s ease-in-out 0s',
+        '&.active': {
+          opacity: 1,
+          visibility: 'visible',
+        },
+        ul: {
+          display: 'block',
+          'li + li': {
+            marginTop: 5,
+          },
+        },
+        button: {
+          marginTop: 8,
+          width: '100%',
+        },
+      },
+    },
   },
   navbar: {
-    display: ['none', null, null, null, 'flex'],
     alignItems: 'center',
     flexGrow: 1,
-    // justifyContent: 'center',
-    a: {
+    justifyContent: 'center',
+  },
+  navList: {
+    display: ['flex'],
+    listStyle: 'none',
+    marginLeft: 'auto',
+    p: 0,
+    '.nav-item': {
       cursor: 'pointer',
-      display: ['flex'],
       fontWeight: 400,
-      color: 'heading',
       padding: 0,
-      transition: 'all 0.3s ease-in-out 0s',
-      '+ a': {
-        ml: 7,
-      },
+      margin: '0 20px',
     },
     '.active': {
       color: 'primary',
     },
+  },
+  joinNow: {
+    marginLeft: 'auto',
+  },
+  closeButton: {
+    height: '32px',
+    padding: '4px',
+    minHeight: 'auto',
+    width: '32px',
+    ml: '3px',
   },
 };

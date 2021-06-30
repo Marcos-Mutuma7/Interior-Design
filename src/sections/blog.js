@@ -15,9 +15,9 @@ const data = [
     id: 1,
     image: news1,
     title: 'Introducing our newest team with great experience',
-    desc:
-      'Brian Halligan knows that you need more than a great product to have a great brand.',
+    desc: '',
     link: '#',
+  
   },
   {
     id: 2,
@@ -76,5 +76,6 @@ const styles = {
   masonry: {
     maxWidth: 1250,
     mx: [-3, null, null, null, 'auto'],
+    
   },
 };

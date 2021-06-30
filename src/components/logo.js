@@ -1,13 +1,16 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from 'theme-ui';
+import { jsx ,Heading} from 'theme-ui';
 import { Link } from 'components/link';
-import LogoSvg from 'components/icons/logo';
+
 
 export default function Logo({ isSticky, footer, ...props }) {
   return (
     <Link path="/" sx={styles.logo} {...props}>
-      <LogoSvg />
+      <Heading as='h1'>
+          Interior
+      </Heading>
+
     </Link>
   );
 }
@@ -17,9 +20,8 @@ const styles = {
     cursor: 'pointer',
     display: 'inline-flex',
     maxWidth: [null, null, null, 185, null, 'none'],
-    svg: {
-      height: 'auto',
-      width: [128, null, '100%'],
+    h1: {
+      fontFamiy:'headingAlt'
     },
   },
 };

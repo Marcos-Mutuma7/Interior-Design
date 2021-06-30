@@ -2,6 +2,7 @@
 /** @jsx jsx */
 import { jsx, Box, Container, Heading, Text } from 'theme-ui';
 import SupportType from 'components/cards/support-type';
+import SectionHeading from 'components/section-heading';
 import Image from 'components/image';
 import illustration from 'assets/images/support-2.png';
 import icon1 from 'assets/images/icons/1.png';
@@ -28,21 +29,12 @@ const Support = () => {
       <Container>
         <div sx={styles.grid}>
           <div sx={styles.content}>
-            <div sx={styles.heading}>
-              <Heading sx={styles.title}>
-                Do you need help? Our support team ready to help you
-              </Heading>
-              <Text as="p" sx={styles.summary}>
-                Get your tests delivered at let home collect sample from the
-                victory of the managements that supplies best design system
-                guidelines ever.
-              </Text>
-            </div>
-            {/* <SectionHeading
+           
+            <SectionHeading
               sx={styles.heading}
               title="Do you need help? Our support team ready to help you"
               description="Get your tests delivered at let home collect sample from the victory of the managements that supplies best design system guidelines ever."
-            /> */}
+            /> 
             {data.map((support) => (
               <SupportType key={support.id} data={support} />
             ))}
@@ -90,7 +82,7 @@ const styles = {
     textAlign: ['center', null, null, 'left'],
     h2: {
       color: 'heading',
-      fontFamily: 'headingAlt',
+      fontFamily: 'heading',
       fontSize: [4, null, 6, 8, null, null, 11],
       fontWeight: 500,
       lineHeight: [1.33, null, 1.4, 1.53],

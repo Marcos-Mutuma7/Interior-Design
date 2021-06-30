@@ -1,38 +1,20 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx, Box, Heading, Text, Image } from 'theme-ui';
-import { LearnMore } from 'components/link';
+import { jsx, Box, Heading, Text } from 'theme-ui';
 
-const SectionHeading = ({
-  title,
-  emoji,
-  slogan,
-  learnMore,
-  description,
-  ...props
-}) => {
+const SectionHeading = ({ slogan, title, description, ...props }) => {
   return (
-    <Box sx={styles.heading} {...props}>
+    <Box sx={styles.headingWrapper} {...props}>
       {slogan && (
-        <Text as="p" sx={styles.slogan}>
+        <Text sx={styles.slogan} as="p">
           {slogan}
         </Text>
       )}
-      <Heading as="h3" sx={styles.title}>
-        {emoji ? <span>{title}</span> : title}
-        {emoji && <Image src={emoji} alt="emoji" />}
-      </Heading>
+      <Heading sx={styles.title}>{title}</Heading>
       {description && (
-        <Text as="p" sx={styles.description}>
+        <Text sx={styles.description} as="p">
           {description}
         </Text>
-      )}
-      {learnMore && (
-        <LearnMore
-          path="#"
-          sx={{ mt: [3, null, null, 4] }}
-          label={learnMore ?? 'Learn More'}
-        />
       )}
     </Box>
   );
@@ -41,37 +23,27 @@ const SectionHeading = ({
 export default SectionHeading;
 
 const styles = {
-  heading: {
-    mx: 'auto',
+  headingWrapper: {
+    maxWidth: 584,
+    margin: '0 auto 60px',
     textAlign: 'center',
   },
   slogan: {
-    color: 'primary',
-    fontWeight: 500,
-    fontSize: 2,
-    lineHeight: 2.5,
+    color: (theme) => theme.colors.primary,
+    fontSize: 18,
+    fontWeight: 700,
+    lineHeight: 2.22,
+    mb: ['12px'],
   },
   title: {
-    color: 'heading',
-    fontFamily: 'headingAlt',
-    fontWeight: 700,
-    fontSize: [4, null, 5, 6],
-    lineHeight: [1.33, 1.33, 2.08],
-    letterSpacing: [null, null, null, 'heading'],
-
-    img: {
-      ml: ['15px'],
-      position: 'relative',
-      top: '8px',
-      maxWidth: [25, null, null, '100%'],
-    },
+    fontSize: [21, , , 30],
+    fontWeight: [500, 400],
+    lineHeight: 1.68,
+    letterSpacing: 'heading',
   },
   description: {
-    color: 'heading',
-    fontSize: ['14px', null, '16px'],
-    lineHeight: [1.86, null, 2.2],
-    mt: [5],
-    maxWidth: 610,
-    m: ['10px auto 0'],
+    fontSize: 17,
+    lineHeight: 2.07,
+    color: (theme) => theme.colors.text,
   },
 };

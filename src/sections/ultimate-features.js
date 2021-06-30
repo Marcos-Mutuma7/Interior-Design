@@ -58,7 +58,7 @@ const data = [
 
 const UltimateFeatures = () => {
   return (
-    <section id="features" sx={styles.section}>
+    <section id="feature" sx={styles.section}>
       <Container>
         <SectionHeading
           sx={styles.heading}

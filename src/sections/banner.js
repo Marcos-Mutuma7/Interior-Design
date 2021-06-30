@@ -1,140 +1,136 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx, Box, Flex, Container, Heading, Text } from 'theme-ui';
+import { jsx, Box, Container, Heading, Text, Button } from 'theme-ui';
 import { rgba } from 'polished';
-import Image from 'components/image';
-import SubscriptionForm from 'components/subscription-form';
-import illustration from 'assets/images/banner-bg.png';
-import paypal from 'assets/images/paypal.png';
-import google from 'assets/images/google.png';
-import dropbox from 'assets/images/dropbox.png';
 
-const logos = [
+import bannerBg from 'assets/images/banner-bg.png';
+
+
+const options = [
   {
-    name: 'Paypal',
-    src: paypal,
+    id: 1,
+    label: 'Brooklyn, New york',
+    value: 'Brooklyn, New york',
   },
   {
-    name: 'Google',
-    src: google,
+    id: 2,
+    label: 'Atlanta, Georgia',
+    value: 'Atlanta, Georgia',
   },
   {
-    name: 'Dropbox',
-    src: dropbox,
+    id: 3,
+    label: 'Minneapolis, Minnesota',
+    value: 'Minneapolis, Minnesota',
+  },
+  {
+    id: 4,
+    label: 'Chicago, Illinois',
+    value: 'Chicago, Illinois',
   },
 ];
 
-const Banner = () => {
+export default function Banner() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('submitting...');
+  };
+
   return (
     <Box as="section" id="home" sx={styles.section}>
       <Container>
         <Box sx={styles.contentWrapper}>
           <Box sx={styles.bannerContent}>
-            <Heading as="h1">
-              A Creative way to grow your Exciting Business ideas
+            <Heading as="h1" sx={styles.heroTitle}>
+              Coworking space that will feel like home.
             </Heading>
-            <Text as="p">
-              Get your tests delivered at let home collect sample from the
-              victory of the managements that supplies best design system
-              guidelines ever.
+            <Text as="p" sx={styles.desc}>
+              Whether you’re an established enterprise or a growing startup,
+              discover spaces that inspire which will best your most impactful
+              work.
             </Text>
-            <SubscriptionForm sx={styles.subscriptionForm} />
-            <Flex sx={styles.sponsoredBy}>
-              <Text as="span">Our clients</Text>
-              <Flex sx={styles.sponsor}>
-                {logos?.map((logo, index) => (
-                  <Flex as="figure" key={index}>
-                    <Image src={logo.src} alt={logo.name} />
-                  </Flex>
-                ))}
-              </Flex>
-            </Flex>
+            <Box as="form" onSubmit={handleSubmit}>
+        
+              <Button type="submit" sx={styles.button} variant="primary">
+                Read More
+              </Button>
+            </Box>
           </Box>
         </Box>
       </Container>
     </Box>
   );
-};
-
-export default Banner;
-
-const styles = {
-  section: {
-    background: `transparent url(${illustration}) no-repeat center top / cover`,
-    pt: [18, null, null, 17, null, null, 0],
-    pb: [12, null, null, 12, 7, 11, 0],
-  },
-  contentWrapper: {
-    gap: [null, null, null, null, 8, 15],
-    display: ['block', null, null, null, 'grid'],
-    alignItems: 'center',
-    gridTemplateColumns: [null, null, null, null, '1fr 1fr', '530px 1fr'],
-    minHeight: ['auto', null, null, null, '42vh', '81vh', '100vh'],
-    pt: [null, null, null, 50, 0, null],
-    '@media only screen and (min-width:1501px) and (max-width:1600px)': {
-      pt: 14,
-    },
-  },
-  bannerContent: {
-    maxWidth: [null, null, 450, '600px', null, 'none'],
-    m: [null, null, '0 auto', null, 0],
-    textAlign: ['center', null, null, null, 'left'],
-    h1: {
-      fontFamily: 'headingAlt',
-      fontSize: [9, null, null, 10, 12, 45, 16],
-      lineHeight: [1.31, null, null, 1.5, null, 1.26],
-      letterSpacing: [0, null, null, null, '-1.5px'],
-      color: 'textSecondary',
-    },
-    p: {
-      fontSize: ['13px', null, null, 2, 3],
-      lineHeight: [1.87, null, null, 2, null, 2.33],
-      color: 'textSecondary',
-      maxWidth: [null, null, 370, 470],
-      m: ['20px auto 0', null, null, null, '25px auto 0'],
-    },
-  },
-  subscriptionForm: {
-    maxWidth: [null, null, null, 470, 'none'],
-    m: ['30px 0 0', null, null, '30px auto', '35px 0 0'],
-    input: {
-      backgroundColor: '#FFFFFF',
-      border: '0 none',
-      fontFamily: 'body',
-      fontSize: [1, null, null, null, 2],
-      px: [3, null, null, 5],
-      boxShadow: '0px 16px 40px rgba(72, 59, 26, 0.08)',
-      minHeight: [40, 50, null, null, null, 60],
-      /* Chrome, Firefox, Opera, Safari 10.1+ */
-      '::placeholder': {
-        color: rgba('#02073E', 0.4),
-        opacity: 1 /* Firefox */,
+}
+    const styles = {
+      section: {
+        background: `url(${bannerBg}) no-repeat center top / cover`,
+        backgroundSize: ['100%', null, null, null, 'cover'],
       },
-    },
-    button: {
-      fontSize: [0, 1, null, null, 2],
-      minHeight: [40, 50, null, null, null, 60],
-      px: ['18px', null, null, null, 6],
-    },
-  },
-  sponsoredBy: {
-    alignItems: 'center',
-    justifyContent: ['center', null, null, 'flex-start'],
-    maxWidth: [null, null, null, 470, 'none'],
-    m: ['30px 0 0', null, null, '30px auto', '35px 0 0'],
-    span: {
-      fontSize: ['13px', null, null, null, 2],
-      lineHeight: 2.62,
-      color: rgba('#566272', 0.6),
-    },
-  },
-  sponsor: {
-    alignItems: 'center',
-    figure: {
-      ml: [2, null, null, null, 4, 5],
-      img: {
-        maxWidth: ['60px', null, null, null, '80px', '100%'],
+      contentWrapper: {
+        display: 'flex',
+        alignItems: 'center',
+        minHeight: [null, null, null, null, '50vh', '100vh'],
       },
-    },
-  },
-};
+      bannerContent: {
+        backgroundColor: rgba('#fff', 0.73),
+        boxShadow: [
+          '0px 10px 16px rgba(52, 61, 72, 0.12)',
+          null,
+          null,
+          null,
+          'none',
+        ],
+        maxWidth: [null, null, null, 600, 500, null, 650],
+        padding: [
+          '20px',
+          '30px',
+          null,
+          null,
+          null,
+          '30px 50px 60px',
+          '50px 60px 90px',
+        ],
+        borderRadius: 5,
+        m: ['110px 0 0', null, null, '110px auto 0', '60px 0 0', null, 0],
+        '@media only screen and (min-height: 720px) and (max-height: 760px), (min-width: 1501px) and (max-width: 1560px) ': {
+          maxWidth: 515,
+          mt: 70,
+          padding: '30px 50px 65px',
+        },
+      },
+      heroTitle: {
+        fontSize: [22, 28, 28, 40, , 5, 8],
+        fontWeight: 700,
+        letterSpacing: 'heading',
+        lineHeight: [1.4, null, null, null, null, null, 1.57],
+        '@media only screen and (min-height: 720px) and (max-height: 760px), (min-width: 1501px) and (max-width: 1560px) ': {
+          fontSize: 40,
+        },
+      },
+      desc: {
+        fontSize: [15, 16, 15, 17],
+        lineHeight: [1.53, 1.53, 1.53, 2, 2.4, 2, 2.48],
+        maxWidth: 440,
+        marginTop: [15, 15, 15, null, null, null, 30],
+        '@media only screen and (min-height: 720px) and (max-height: 760px), (min-width: 1501px) and (max-width: 1560px) ': {
+          mt: 15,
+        },
+      },
+      select: {
+        marginTop: 30,
+        select: {
+          minWidth: ['auto', 'auto', 'initial'],
+        },
+      },
+      button: {
+        fontFamily:'heading',
+        fontSize: 17,
+        fontWeight: 700,
+        marginTop: 20,
+        width: '100%',
+        minHeight: [50, null, null, null, 60],
+        fontSize: [16, 16, 16, 20],
+        ':focus': {
+          outline: '0 none',
+        },
+      },
+    };

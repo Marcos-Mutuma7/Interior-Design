@@ -1,18 +1,12 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx, Flex } from 'theme-ui';
+import { jsx } from 'theme-ui';
 import React from 'react';
 import Header from './header/header';
-import Footer from './footer/footer';
+import Footer from './footer';
 export default function Layout({ children }) {
   return (
-    <Flex
-      sx={{
-        minHeight: '100vh',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-      }}
-    >
+    <React.Fragment>
       <Header />
       <main
         sx={{
@@ -22,6 +16,6 @@ export default function Layout({ children }) {
         {children}
       </main>
       <Footer />
-    </Flex>
+    </React.Fragment>
   );
-}
+      }
