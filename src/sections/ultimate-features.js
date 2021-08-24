@@ -16,43 +16,43 @@ const data = [
     id: 1,
     icon: icon1,
     path: '#!',
-    title: 'Email Subscription',
-    description: `We’re driven beyond just finishing projects. We want to find smart solutions.`,
+    title: 'We’re Committed to Our People First',
+    description: `The proud, caring and resilient members of the Waste Management family are the foundation of our success. We commit to taking care of each other, our customers, our communities and the environment.`,
   },
   {
     id: 2,
     icon: icon2,
     path: '#!',
-    title: 'Bolt Performance',
-    description: `We’re driven beyond just finishing projects. We want to find smart solutions.`,
+    title: 'We’re Committed to Success With Integrity',
+    description: `Our success is based not only on the results we achieve, but how we achieve them. We commit to being accountable, honest, trustworthy, ethical and compliant in all we do.`,
   },
   {
     id: 3,
     icon: icon3,
     path: '#!',
-    title: 'Secure Transaction',
-    description: `We’re driven beyond just finishing projects. We want to find smart solutions.`,
+    title: 'We Value Inclusion & Diversity',
+    description: `We embrace and cultivate respect, trust, open communications and diversity of thought and people.`,
   },
   {
     id: 4,
     icon: icon4,
     path: '#!',
-    title: 'Multiple Options',
-    description: `We’re driven beyond just finishing projects. We want to find smart solutions.`,
+    title: 'We Value Our Customers',
+    description: `We place our customers at the center of what we do and aspire to delight them every day.`,
   },
   {
     id: 5,
     icon: icon5,
     path: '#!',
-    title: 'Customer Support',
-    description: `We’re driven beyond just finishing projects. We want to find smart solutions.`,
+    title: 'We Value Safety',
+    description: `We have zero tolerance for unsafe actions and conditions and make safety a core value without compromise.`,
   },
   {
     id: 6,
     icon: icon6,
     path: '#!',
-    title: 'Integrated with Shopify',
-    description: `We’re driven beyond just finishing projects. We want to find smart solutions.`,
+    title: 'We Value Our Environment',
+    description: `We are responsible stewards of the environment and champions for sustainability.`,
   },
 ];
 
@@ -62,8 +62,8 @@ const UltimateFeatures = () => {
       <Container>
         <SectionHeading
           sx={styles.heading}
-          slogan="Ideal solutions for you"
-          title="Go beyond ultimate features"
+          slogan="Who are we?"
+          title="Always Working For A Sustainable Tomorrow."
         />
         <Box sx={styles.grid}>
           {data?.map((item) => (

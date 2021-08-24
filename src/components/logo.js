@@ -1,15 +1,14 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx ,Heading} from 'theme-ui';
+import { jsx ,Heading ,Image} from 'theme-ui';
 import { Link } from 'components/link';
+import logo from 'assets/images/logo.png';
 
 
 export default function Logo({ isSticky, footer, ...props }) {
   return (
     <Link path="/" sx={styles.logo} {...props}>
-      <Heading as='h1'>
-          Interior
-      </Heading>
+      <Image src={logo} sx={styles.image} alt="startup landing logo" />
 
     </Link>
   );
@@ -19,9 +18,8 @@ const styles = {
     alignItems: 'center',
     cursor: 'pointer',
     display: 'inline-flex',
-    maxWidth: [null, null, null, 185, null, 'none'],
-    h1: {
-      fontFamiy:'headingAlt'
-    },
+    width:[120, 140],
+    
+
   },
 };

@@ -98,6 +98,7 @@ const styles = {
     transition: 'all 0.3s ease-in-out 0s',
     '&.is-mobile-menu': {
       backgroundColor: '#fff',
+    
     },
   },
   headerInner: {
@@ -125,6 +126,7 @@ const styles = {
           display: 'block',
           'li + li': {
             marginTop: 5,
+            color:'black;'
           },
         },
         button: {
@@ -144,6 +146,7 @@ const styles = {
     listStyle: 'none',
     marginLeft: 'auto',
     p: 0,
+    color:'white',
     '.nav-item': {
       cursor: 'pointer',
       fontWeight: 400,

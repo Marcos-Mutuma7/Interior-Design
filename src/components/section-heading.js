@@ -29,7 +29,7 @@ const styles = {
     textAlign: 'center',
   },
   slogan: {
-    color: (theme) => theme.colors.primary,
+    color:'#07073F',
     fontSize: 18,
     fontWeight: 700,
     lineHeight: 2.22,
@@ -40,6 +40,7 @@ const styles = {
     fontWeight: [500, 400],
     lineHeight: 1.68,
     letterSpacing: 'heading',
+    color:'#07073F',
   },
   description: {
     fontSize: 17,

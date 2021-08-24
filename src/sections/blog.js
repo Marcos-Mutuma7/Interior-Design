@@ -14,8 +14,8 @@ const data = [
   {
     id: 1,
     image: news1,
-    title: 'Introducing our newest team with great experience',
-    desc: '',
+    title: 'Free Container Delivery*',
+    desc: 'Do not sweat the setup. Our courteous and professional drivers will deliver your container for free.',
     link: '#',
   
   },
@@ -23,21 +23,21 @@ const data = [
     id: 2,
     image: news2,
     title:
-      'New banking application has  developed and we expecting good feedback',
+      'One-Year Service Agreement',
     desc: '',
     link: '#',
   },
   {
     id: 3,
     image: news3,
-    title: 'Ui/UX industry are doing great job in previous year history',
+    title: 'Price Transparency ',
     desc: '',
     link: '',
   },
   {
     id: 4,
     image: news4,
-    title: 'Develop you design experience with figma features.',
+    title: 'Temporary disposal solutions.',
     desc: '',
     link: '',
   },
@@ -54,7 +54,7 @@ const Blog = () => {
         <SectionHeading
           sx={{ mb: [6, null, null, 14] }}
           slogan="Latest newsfeed"
-          title="Our recent blog post that updated"
+          title="Seradelis is at your service with reliable trash and recycling collection"
         />
         <Masonry sx={styles.masonry} options={masonryOptions}>
           {data.map((post) => (

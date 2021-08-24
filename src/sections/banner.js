@@ -41,12 +41,10 @@ export default function Banner() {
         <Box sx={styles.contentWrapper}>
           <Box sx={styles.bannerContent}>
             <Heading as="h1" sx={styles.heroTitle}>
-              Coworking space that will feel like home.
+              Affordable, Eco-Friendly Waste Management company in Africa
             </Heading>
             <Text as="p" sx={styles.desc}>
-              Whether you’re an established enterprise or a growing startup,
-              discover spaces that inspire which will best your most impactful
-              work.
+            Our consolidated approach provides you with a Single Source of Responsibility that makes your project management easier.
             </Text>
             <Box as="form" onSubmit={handleSubmit}>
         
@@ -71,7 +69,7 @@ export default function Banner() {
         minHeight: [null, null, null, null, '50vh', '100vh'],
       },
       bannerContent: {
-        backgroundColor: rgba('#fff', 0.73),
+        backgroundColor: rgba('#fff', 0.50),
         boxShadow: [
           '0px 10px 16px rgba(52, 61, 72, 0.12)',
           null,
@@ -99,6 +97,7 @@ export default function Banner() {
       },
       heroTitle: {
         fontSize: [22, 28, 28, 40, , 5, 8],
+        color:'#07073F',
         fontWeight: 700,
         letterSpacing: 'heading',
         lineHeight: [1.4, null, null, null, null, null, 1.57],
@@ -108,6 +107,7 @@ export default function Banner() {
       },
       desc: {
         fontSize: [15, 16, 15, 17],
+        color:'#07073F',
         lineHeight: [1.53, 1.53, 1.53, 2, 2.4, 2, 2.48],
         maxWidth: 440,
         marginTop: [15, 15, 15, null, null, null, 30],
